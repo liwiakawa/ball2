@@ -186,9 +186,8 @@ function ballInBadHole() {
   var bmaxx = ball.x + ball.radius;
   var bmaxy = ball.y + ball.radius;
 
-  return (
-    bminx >= bhminx && bminy >= bhminy && bmaxx <= bhmaxx && bmaxy <= bhmaxy
-  );
+  return bminx >= bhminx && bminy >= bhminy && bmaxx <= bhmaxx && bmaxy <= bhmaxy;
+  
 }
 
 function refreshTimer() {
