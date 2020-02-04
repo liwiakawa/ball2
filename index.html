@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Ball in hole</title>
+  <link type="text/css" rel="stylesheet" href="styles/reset.css" />
+  <link type="text/css" rel="stylesheet" href="styles/style.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" />
+  <link href="https://fonts.googleapis.com/css?family=Electrolize&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <table id="wrapper">
+    <tr>
+      <td id="content">
+        <table id="tbl-content">
+          <tr>
+            <td id="top">
+              <center><span id="timer"></span></center>
+            </td>
+          </tr>
+          <tr>
+            <td id="middle">
+              <canvas id="canvas"></canvas>
+            </td>
+          </tr>
+          <tr>
+            <center><td id="controls">
+              <table>
+                <tr>
+                  <td class="button" id="play" onclick="playGame();">
+                    <i class="fab fa-google-play"></i>
+                  </td>
+                  <td class="button" id="pause" onclick="pauseGame();">
+                    <i class="fas fa-pause"></i>
+                  </td>
+                  <td class="button" id="stop" onclick="stopGame();">
+                    <i class="fas fa-redo-alt"></i>
+                  </td>
+                  <td class="button" id="highscores" onclick="highscores();">
+                    <i class="fas fa-star"></i>
+                  </td>
+                </tr>
+              </table>
+            </td></center>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <script src="scripts/app.js" type="text/javascript"></script>
+</body>
+
+</html>

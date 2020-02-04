@@ -1,0 +1,61 @@
+root { 
+    display: block;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: Electrolize;
+    color: #8a3e46;
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+#tbl-content {
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/canvas-background.png');
+    background-size: cover;
+}
+
+#tbl-content td {
+    text-align: center;
+}
+
+#middle {
+    height: 70%;
+}
+
+#middle canvas {
+    width: 100%;
+    height: 100%;
+}
+
+#top, #controls {
+    height: 9%;
+    padding: 1%;
+    background-color: rgba(255, 255, 255, 0.671);
+    background-repeat: repeat;
+    font-size: 48px;
+}
+
+
+
+#controls table {
+    width: 100%;
+    height: 100%;
+}
+
+#controls td {
+    height: 100%;
+}
+
+.button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
