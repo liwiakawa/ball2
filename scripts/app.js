@@ -12,7 +12,6 @@ let hole; //picz
 let badhole; //bad pepper
 let game; //giera
 let gameloop; //pętla czy trafiłeś w dobrą dziurę
-let gamebadloop; // chuj wie czy to potrzebne
 let ballImage; //fotka bakłażana
 let holeImage; //fotka piczy
 let badholeImage; // fotka papryki
@@ -152,18 +151,16 @@ function loop() {
 
       setCookie(prefix + name, "" + time, 365 * 100);
     }
+
+    else if (ballInBadHole()) {
+      stopGame();
+      alert("GAMEOVER!");
+      refreshTimer();
+    }
   }
 
   game.timepassed += game.speed;
   refreshTimer();
-}
-
-function badloop() {
-  if (ballInBadHole()) {
-    stopGame();
-    alert("GAMEOVER!");
-    refreshTimer();
-  }
 }
 
 function ballInHole() {
@@ -257,7 +254,6 @@ function playGame() {
   if (game.state !== 1) {
     game.state = 1;
     gameloop = setInterval(loop, game.speed);
-    gamebadloop = setInterval(badloop, game.speed);
     changeGameState();
     drawHole();
     drawBadHole();
