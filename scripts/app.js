@@ -10,11 +10,13 @@ let context; //kontekst
 let ball; //bakłażan
 let hole; //picz
 let badhole; //bad pepper
+let greenbadhole;
 let game; //giera
 let gameloop; //pętla czy trafiłeś w dobrą dziurę
 let ballImage; //fotka bakłażana
 let holeImage; //fotka piczy
 let badholeImage; // fotka papryki
+let greenbadholeImage;
 
 function start() {
   canvas = document.getElementById("canvas"); //canvasik
@@ -27,6 +29,7 @@ function start() {
   initGame(); //czyści plansze
   initHole();
   initBadHole();
+  initGreenBadHole();
   initBall();
   changeGameState();
 
@@ -64,6 +67,7 @@ function onDeviceOrientationChange(event) {
     context.clearRect(0, 0, canvas.width, canvas.height);
     drawHole();
     drawBadHole();
+    drawGreenBadHole();
     drawBall();
   }
 }
@@ -86,6 +90,7 @@ function clearGame() {
   initBall();
   initHole();
   initBadHole();
+  initGreenBadHole();
   context.clearRect(0, 0, canvas.width, canvas.height);
   refreshTimer();
 }
@@ -133,6 +138,18 @@ function initBadHole() {
   badholeImage.src = "img/badhole.png";
 }
 
+function initGreenBadHole() {
+  greenbadhole = {
+    size: ballSize(),
+    radius: ballSize(),
+    x: ballSize() + Math.random() * (canvas.width - ballSize()),
+    y: ballSize() + Math.random() * (canvas.height - ballSize())
+  };
+
+  greenbadholeImage = new Image();
+  greenbadholeImage.src = "img/greenbadhole.png";
+}
+
 function loop() {
   if (ballInHole()) {
     var time = game.timepassed;
@@ -157,6 +174,7 @@ function loop() {
       alert("GAMEOVER!");
       refreshTimer();
     }
+
   }
 
   game.timepassed += game.speed;
@@ -178,10 +196,10 @@ function ballInHole() {
 }
 
 function ballInBadHole() {
-  var bhminx = badhole.x - badhole.radius;
-  var bhminy = badhole.y - badhole.radius;
-  var bhmaxx = badhole.x + badhole.radius;
-  var bhmaxy = badhole.y + badhole.radius;
+  var bhminx = (badhole.x - badhole.radius) || (greenbadhole.x - greenbadhole.radius);
+  var bhminy = (badhole.y - badhole.radius) || (greenbadhole.y - greenbadhole.radius);
+  var bhmaxx = (badhole.x + badhole.radius) || (greenbadhole.x + greenbadhole.radius);
+  var bhmaxy = (badhole.y + badhole.radius) || (greenbadhole.y + greenbadhole.radius);
 
   var bminx = ball.x - ball.radius;
   var bminy = ball.y - ball.radius;
@@ -233,6 +251,16 @@ function drawBadHole() {
     badhole.size
   );
 }
+function drawGreenBadHole() {
+  context.drawImage(
+    greenbadholeImage,
+    greenbadhole.x - greenbadhole.radius,
+    greenbadhole.y - greenbadhole.radius,
+    greenbadhole.size,
+    greenbadhole.size
+  );
+}
+
 
 function getBounds() {
   return {
@@ -257,6 +285,7 @@ function playGame() {
     changeGameState();
     drawHole();
     drawBadHole();
+    drawGreenBadHole();
     drawBall();
   }
 }
