@@ -196,10 +196,15 @@ function ballInHole() {
 }
 
 function ballInBadHole() {
-  var bhminx = (badhole.x - badhole.radius) || (greenbadhole.x - greenbadhole.radius);
-  var bhminy = (badhole.y - badhole.radius) || (greenbadhole.y - greenbadhole.radius);
-  var bhmaxx = (badhole.x + badhole.radius) || (greenbadhole.x + greenbadhole.radius);
-  var bhmaxy = (badhole.y + badhole.radius) || (greenbadhole.y + greenbadhole.radius);
+  var bhminx = (badhole.x - badhole.radius) 
+  var bhminy = (badhole.y - badhole.radius)  
+  var bhmaxx = (badhole.x + badhole.radius) 
+  var bhmaxy = (badhole.y + badhole.radius) 
+
+  var bghminx =(greenbadhole.x - greenbadhole.radius);
+  var bghminy =(greenbadhole.y - greenbadhole.radius);
+  var bghmaxx =(greenbadhole.x + greenbadhole.radius);
+  var bghmaxy =(greenbadhole.y + greenbadhole.radius);
 
   var bminx = ball.x - ball.radius;
   var bminy = ball.y - ball.radius;
@@ -207,7 +212,7 @@ function ballInBadHole() {
   var bmaxy = ball.y + ball.radius;
 
   return (
-    bminx >= bhminx && bminy >= bhminy && bmaxx <= bhmaxx && bmaxy <= bhmaxy
+    bminx >=( bhminx && bminy)|| (bghminx && bminy) >= (bhminy && bmaxx )||(bghminy && bmaxx )<=( bhmaxx && bmaxy)||( bghmaxx && bmaxy) <= bhmaxy||bghmaxy
   );
 }
 
